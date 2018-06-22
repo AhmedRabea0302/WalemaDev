@@ -28,6 +28,28 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         * home route
         */
         Route::get('/', ['as' => 'admin.home', 'uses' => 'HomeController@getIndex']);
+
+        // Settings Page
+        Route::get('/settings', 'SettingController@getIndex')->name('admin.settings');
+        Route::post('/update-settings', 'SettingController@postUpdateSettings')->name('admin.update_settings');
+        Route::post('/social-link', 'SettingController@postAddSocialLink')->name('admin.add_social_link');
+        Route::post('/edit/social-link/{id}', 'SettingController@postUpdateSocialLink')->name('admin.update_social_link');
+        Route::post('/delete-social-link/{id}', 'SettingController@postDeleteSocialLink')->name('admin.delete_social_link');
+
+        // Users Page
+        Route::get('/users', 'UserController@getIndex')->name('admin.users');
+        Route::post('/users', 'UserController@postAddUser')->name('admin.add_user');
+        Route::post('/update-user', 'UserController@postUpdateUser')->name('admin.update_user');
+        Route::post('/delete-user', 'UserController@postDeleteUser')->name('admin.delete_user');
+
+        // Cities and Kitchens Types
+        Route::get('/cities_and_types', 'CityController@getIndex')->name('admin.cities_and_types');
+        Route::post('/add_city', 'CityController@addCity')->name('admin.add_city');
+        Route::post('/delete_city', 'CityController@deleteCity')->name('admin.delete_city');
+
+        Route::post('/add_type', 'TypeController@addType')->name('admin.add_type');
+        Route::post('/delete_type', 'TypeController@deleteType')->name('admin.delete_type');
+
         /*
          * profile routes
          */});
@@ -48,12 +70,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 //            Route::get('/delete/{id}', 'SubscriberController@getDelete')->name('admin.subscribtions.delete');
 //        });
 //
-//        // Settings Page
-//        Route::get('/settings', 'SettingController@getIndex')->name('admin.settings');
-//        Route::post('/update-settings', 'SettingController@postUpdateSettings')->name('admin.update_settings');
-//        Route::post('/social-link', 'SettingController@postAddSocialLink')->name('admin.add_social_link');
-//        Route::post('/edit/social-link/{id}', 'SettingController@postUpdateSocialLink')->name('admin.update_social_link');
-//        Route::post('/delete-social-link/{id}', 'SettingController@postDeleteSocialLink')->name('admin.delete_social_link');
+//
 //
 //        // Static Pages
 //        Route::get('/static-pages/clinic', 'StaticPageController@getIndex')->name('admin.static_pages');
@@ -148,11 +165,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 //        Route::post('/reply-subscribe/{id}', 'SubscribeController@postReply')->name('admin.post_reply_subscriber');
 //        Route::get('/delete-subscribe/{id}', 'SubscribeController@getDelete')->name('admin.get_delete_subscriber');
 //
-//        // Users Page
-//        Route::get('/users', 'UserController@getIndex')->name('admin.users');
-//        Route::post('/users', 'UserController@postAddUser')->name('admin.add_user');
-//        Route::post('/update-user', 'UserController@postUpdateUser')->name('admin.update_user');
-//        Route::post('/delete-user', 'UserController@postDeleteUser')->name('admin.delete_user');
+//
 
 //    });
 });

@@ -18,12 +18,26 @@
                 </a>
             </li>
 
-            {{--<li @if(Request::route()->getName() == 'admin.settings') class="active" @endif class="nav-item">--}}
-                {{--<a href="{{ route('admin.settings') }}" class="nav-link nav-toggle">--}}
-                    {{--<i class="fa fa-gear"></i>--}}
-                    {{--<span class="title">{{ trans('trans.settings') }}</span>--}}
-                {{--</a>--}}
-            {{--</li>--}}
+            <li @if(Request::route()->getName() == 'admin.settings') class="active" @endif class="nav-item">
+                <a href="{{ route('admin.settings') }}" class="nav-link nav-toggle">
+                    <i class="fa fa-gear"></i>
+                    <span class="title">{{ trans('trans.settings') }}</span>
+                </a>
+            </li>
+
+            <li @if(Request::route()->getName() == 'admin.users') class="active" @endif class="nav-item">
+                <a href="{{ route('admin.users') }}" class="nav-link nav-toggle">
+                    <i class="fa fa-users"></i>
+                    <span class="title">المديرين</span>
+                </a>
+            </li>
+
+            <li @if(Request::route()->getName() == 'admin.cities_and_types') class="active" @endif class="nav-item">
+                 <a href="{{ route('admin.cities_and_types') }}" class="nav-link nav-toggle">
+                    <i class="fa fa-map"></i>
+                    <span class="title">المدن وأنواع المطاعم</span>
+                </a>
+            </li>
 
             {{--<li @if(Request::route()->getName() == 'admin.static_pages') class="active" @endif class="nav-item">--}}
                 {{--<a href="{{ route('admin.static_pages') }}" class="nav-link nav-toggle">--}}
@@ -34,13 +48,6 @@
 
             {{--</li>--}}
 
-
-            {{--<li @if(Request::route()->getName() == 'admin.slider') class="active" @endif class="nav-item">--}}
-                {{--<a href="{{ route('admin.slider') }}" class="nav-link nav-toggle">--}}
-                    {{--<i class="fa fa-slideshare"></i>--}}
-                    {{--<span class="title">{{ trans('trans.slider') }}</span>--}}
-                {{--</a>--}}
-            {{--</li>--}}
 
             {{--<li @if(Request::route()->getName() == 'admin.about') class="active" @endif class="nav-item">--}}
                 {{--<a href="{{ route('admin.about') }}" class="nav-link nav-toggle">--}}
@@ -114,12 +121,7 @@
                 {{--</a>--}}
             {{--</li>--}}
 
-            {{--<li @if(Request::route()->getName() == 'admin.users') class="active" @endif class="nav-item">--}}
-                {{--<a href="{{ route('admin.users') }}" class="nav-link nav-toggle">--}}
-                    {{--<i class="fa fa-users"></i>--}}
-                    {{--<span class="title">المديرين</span>--}}
-                {{--</a>--}}
-            {{--</li>--}}
+
         </ul>
         <!-- END SIDEBAR MENU -->
     </div>
