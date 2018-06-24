@@ -169,38 +169,46 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
 //    });
 });
-/////////////// site routes ////////////////////
+/////////////// Site routes ////////////////////
 
-//Route::group(['namespace' => 'site'], function() {
+Route::group(['namespace' => 'Site'], function() {
 //
-//    // Home Page
-//    Route::get('/', 'HomeController@getIndex')->name('site.home');
-//    Route::post('/contact', 'HomeController@postSendMessage')->name('site.send_message');
-//    Route::post('/subscribe', 'HomeController@postSubscribe')->name('site.subscribe');
+    // Home Page
+    Route::get('/', 'HomeController@getIndex')->name('site.home');
+
+    // Register and Login Routes
+    Route::get('/registration', 'RegisterController@getIndex')->name('site.getRegister');
+    Route::post('/registration', 'RegisterController@postRegister')->name('site.postRegister');
+
+
+
+
+//    Route::post('/contact', 'HomeController@postSendMessage')->name('Site.send_message');
+//    Route::post('/subscribe', 'HomeController@postSubscribe')->name('Site.subscribe');
 //
 //    // Services Page
-//    Route::get('/service', 'ServiceController@getIndex')->name('site.services');
-//    Route::get('/single-service/{slug}', 'ServiceController@getSingleService')->name('site.single_service');
+//    Route::get('/service', 'ServiceController@getIndex')->name('Site.services');
+//    Route::get('/single-service/{slug}', 'ServiceController@getSingleService')->name('Site.single_service');
 //
 //    // Doctors Page
-//    Route::get('/doctors', 'DoctorController@getIndex')->name('site.doctors');
+//    Route::get('/doctors', 'DoctorController@getIndex')->name('Site.doctors');
 //
 //    // Blogs Page
-//    Route::get('/blogs', 'BlogController@getIndex')->name('site.blogs');
-//    Route::get('/blogs/{slug}', 'BlogController@getBlog')->name('site.get_blog');
+//    Route::get('/blogs', 'BlogController@getIndex')->name('Site.blogs');
+//    Route::get('/blogs/{slug}', 'BlogController@getBlog')->name('Site.get_blog');
 //
 //    // About Page
-//    Route::get('/about-us', 'AboutController@getIndex')->name('site.about');
+//    Route::get('/about-us', 'AboutController@getIndex')->name('Site.about');
 //
 //    // Gallery Page
-//    Route::get('/gallery', 'GalleryController@getIndex')->name('site.gallery');
+//    Route::get('/gallery', 'GalleryController@getIndex')->name('Site.gallery');
 //
 //    // Gallery Page
-//    Route::get('/contact', 'ContactController@getIndex')->name('site.contact');
+//    Route::get('/contact', 'ContactController@getIndex')->name('Site.contact');
 //
 //    // Reservation Page
-//    Route::get('/reserve', 'ReserveController@getIndex')->name('site.reserve');
-//    Route::post('/reserve', 'ReserveController@postReserve')->name('site.post_reserve');
+//    Route::get('/reserve', 'ReserveController@getIndex')->name('Site.reserve');
+//    Route::post('/reserve', 'ReserveController@postReserve')->name('Site.post_reserve');
 //
 //
-//});
+});
