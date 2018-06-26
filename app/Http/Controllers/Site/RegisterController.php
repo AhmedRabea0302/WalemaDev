@@ -59,7 +59,7 @@ class RegisterController extends Controller
     }
 
     public function getLogout() {
-        Auth::gurad('chef')->logout();
+        Auth::guard('chef')->logout();
         return redirect()->route('site.getRegister');
     }
 }

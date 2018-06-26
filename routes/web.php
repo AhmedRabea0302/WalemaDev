@@ -192,8 +192,13 @@ Route::group(['namespace' => 'Site'], function() {
     Route::post('/update-chef-profile/{id}', 'ChefController@postUpdateChefProfile')->name('site.post-update-chef');
 
     // Meal Routes
-    Route::get('/add-meal', 'MealController@getIndex')->name('site.add-meal');
-    Route::post('/add-meal', 'MealController@postAddMeal')->name('site.postAddMeal');
+    Route::get('/add-meal/{id}', 'MealController@getIndex')->name('site.add-meal');
+    Route::post('/add-meal/{id}', 'MealController@postAddMeal')->name('site.postAddMeal');
+
+    Route::get('/update-meal/{id}/{ch_id}', 'MealController@getUpdateMeal')->name('site.getUpdateMeal');
+    Route::post('/update-meal/{id}/{ch_id}', 'MealController@postUpdateMeal')->name('site.postUpdateMeal');
+
+    Route::post('/delete-meal/{id}/', 'MealController@deleteMeal')->name('site.deleteMeal');
 
 
 

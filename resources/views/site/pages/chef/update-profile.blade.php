@@ -11,17 +11,17 @@
                             <div class="imagea">
                                 <img src="{{ url('storage/uploads/chefs-profile-images') . '/' . $chef->image_name }}" alt="">
                             </div>
-                            <h4>أبو ميمي</h4>
+                            <h4>{{$chef->name}}</h4>
                         </div>
 
                         <div class="admin-user-action">
-                            <a href="#" class="btn btn-primary btn-sm">تعديل</a>
+                            <a href="{{ route('site.update-chef-profile', ['id' => $chef->id]) }}" class="btn btn-primary btn-sm">تعديل</a>
                             <a href="#" class="btn btn-primary btn-sm btn-inverse">توقف مؤقت</a>
                         </div>
 
                         <ul class="admin-user-menu">
-                            <li><a href="{{ route('site.chef-profile',  ['id' => auth()->guard('chef')->user()->id]) }}"><i class="fa fa-tachometer"></i>لوحة التحكم</a></li>
-                            <li><a href="{{ route('site.update-chef-profile',  ['id' => auth()->guard('chef')->user()->id]) }}) }}" class="active"><i class="fa fa-user"></i>الملف الشخصي</a></li>
+                            <li><a href="{{ route('site.chef-profile',  ['id' => $chef->id]) }}"><i class="fa fa-tachometer"></i>لوحة التحكم</a></li>
+                            <li><a href="{{ route('site.update-chef-profile',  ['id' => $chef->id]) }}) }}" class="active"><i class="fa fa-user"></i>الملف الشخصي</a></li>
                             <li><a href="#"><i class="fa fa-delicious"></i>التقييمات</a></li>
                             <li><a href="{{ route('site.getLogout') }}"><i class="fa fa-sign-out"></i>تسجيل الخروج</a></li>
                         </ul>

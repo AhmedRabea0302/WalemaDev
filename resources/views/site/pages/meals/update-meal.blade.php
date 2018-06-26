@@ -1,5 +1,6 @@
 @extends('site.layouts.master')
 @section('content')
+
     <!-- =================== Content Section ============ -->
     <section class="content">
         <div class="container">
@@ -35,15 +36,24 @@
                         <div id="warna">
 
                         </div>
+                        <br>
+
+                        @if(session()->has('c'))
+                            <div class="alert alert-{{ session('c') }}">{{ session('m') }}</div>
+                        @endif
+
                         <div class="admin-section-title">
                             <h2>أضف وجبه</h2>
                         </div>
-                        <form action="{{ route('site.postAddMeal', ['id' => $chef->id]) }}" method="post" class="formAddImage" onsubmit="return false;" enctype="multipart/form-data">
+                        <form action="{{ route('site.postUpdateMeal', ['id' => $meal->id, 'ch_id' => $chef->id]) }}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="col-sm-6 col-md-4">
 
                                 <div class="form-group bootstrap-fileinput-style-01">
                                     <label>صورة الوجبه</label>
+                                    <div class="meal-imagea">
+                                        <img src="{{ url('storage/uploads/meals') . '/' . $meal->image_name }}" alt="">
+                                    </div>
                                     <input name="photo" id="form-register-photo" type="file">
                                     <span class="font12 font-italic">الصوره لا يجب أن تكون أكبر من 250KB **</span>
                                 </div>
@@ -54,7 +64,7 @@
                             <div class="col-sm-6 col-md-4">
                                 <div class="form-group">
                                     <label>اسم الوجبه</label>
-                                    <input name="meal_name" class="form-control" value="" type="text">
+                                    <input name="meal_name" class="form-control" value="{{ $meal->name }}" type="text">
                                 </div>
                             </div>
 
@@ -62,7 +72,7 @@
 
                                 <div class="form-group">
                                     <label>مكونات الوجبه</label>
-                                    <input name="meal_ingredients" class="form-control" value="" type="text">
+                                    <input name="meal_ingredients" class="form-control" value="{{ $meal->ingredients }}" type="text">
                                 </div>
 
                             </div>
@@ -74,7 +84,7 @@
                                     <label for="sel1">سعر الوجبه</label>
                                     <select name="meal_price" class="form-control" id="sel1">
                                         @for($num= 10; $num<=200; $num++)
-                                            <option >{{ $num }}</option>
+                                            <option @if($meal->price == $num) selected @endif >{{ $num }}</option>
                                         @endfor
                                     </select>
                                 </div>
@@ -86,13 +96,15 @@
 
                                 <div class="form-group bootstrap3-wysihtml5-wrapper">
                                     <label>وصفه الوجبه</label>
-                                    <textarea name="meal_description" class="bootstrap3-wysihtml5 form-control" placeholder="" style="height: 200px;"></textarea>
+                                    <textarea name="meal_description" class="bootstrap3-wysihtml5 form-control" placeholder="" style="height: 200px;">
+                                        {{ $meal->description }}
+                                    </textarea>
                                 </div>
 
                             </div>
 
                             <div class="col-sm-12 mt-10">
-                                <input type="submit" value="إضافة وجبة" class="btn btn-primary" />
+                                <input type="submit" value="تعديل الوجبة" class="btn btn-primary" />
                             </div>
 
                         </form>

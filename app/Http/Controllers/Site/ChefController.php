@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Chef;
 use App\City;
+use App\Meal;
 use App\Type;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,7 +14,8 @@ class ChefController extends Controller
 {
     public function getIndex(Request $request) {
         $chef = Chef::find($request->id);
-        return view('site.pages.chef.index', compact('chef'));
+        $meals = Meal::where('chef_id', $request->id)->get();
+        return view('site.pages.chef.index', compact('chef', 'meals'));
     }
 
     public function getUpdateChefProfile(Request $request) {
@@ -70,6 +72,7 @@ class ChefController extends Controller
         $chef->address         = $request->chef_address;
         $chef->street         = $request->chef_street;
         $chef->description    = $request->chef_desc;
+        $chef->status    = 0;
 
         $chef->save();
 

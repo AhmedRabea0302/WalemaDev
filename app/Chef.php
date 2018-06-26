@@ -20,4 +20,8 @@ class Chef extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password'
     ];
+
+    public function chefMeals() {
+        return $this->hasMany('App\Meal', 'chef_id');
+    }
 }
