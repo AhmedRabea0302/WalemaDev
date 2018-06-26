@@ -535,7 +535,7 @@ var FormEditable = function() {
 
             // init editable toggler
             $('#enable').click(function() {
-                $('#user .editable').editable('toggleDisabled');
+                $('#chef .editable').editable('toggleDisabled');
             });
 
             // init 
@@ -548,7 +548,7 @@ var FormEditable = function() {
             });
 
             // handle editable elements on hidden event fired
-            $('#user .editable').on('hidden', function(e, reason) {
+            $('#chef .editable').on('hidden', function(e, reason) {
                 if (reason === 'save' || reason === 'nochange') {
                     var $next = $(this).closest('tr').next().find('.editable');
                     if ($('#autoopen').is(':checked')) {

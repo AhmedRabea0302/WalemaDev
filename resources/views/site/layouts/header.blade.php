@@ -11,7 +11,8 @@
                         <li><a href="#">المطابخ</a></li>
                         <li><a href="#">من نحن</a></li>
                         <li><a href="#">المدونة</a></li>
-                        <li><a href="{{ route('site.getRegister') }}">تسجيل الدخول</a></li>
+                        @if(auth()->guard('chef')->user())<li><a href="{{ route('site.getLogout') }}">تسجيل الخروج</a></li>@endif
+                        @if(!auth()->guard('chef')->user())<li><a href="{{ route('site.getRegister') }}">تسجيل الدخول</a></li>@endif
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div>

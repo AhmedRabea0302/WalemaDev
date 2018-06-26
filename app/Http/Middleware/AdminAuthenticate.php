@@ -24,7 +24,7 @@ class AdminAuthenticate {
             }
         }
 
-//        view()->share('user', Auth::user());
+//        view()->share('chef', Auth::chef());
 
         return $next($request);
     }

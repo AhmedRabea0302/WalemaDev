@@ -50,7 +50,7 @@ class AuthController extends Controller {
     }
 
     /**
-     * Logout The user
+     * Logout The chef
      */
     public function getLogout() {
         Auth::guard('admins')->logout();

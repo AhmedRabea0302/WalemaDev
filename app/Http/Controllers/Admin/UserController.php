@@ -73,7 +73,7 @@ class UserController extends Controller
         session()->push('m', 'success');
         session()->push('m', 'Updated Successfully');
 
-        return ['status' => 'success', 'data' => 'User Updated Successfully', 'id' => 'update-user'];
+        return ['status' => 'success', 'data' => 'User Updated Successfully', 'id' => 'update-chef'];
     }
 
     public function postDeleteUser(Request $request) {

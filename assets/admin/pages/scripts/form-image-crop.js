@@ -234,14 +234,14 @@ var FormImageCrop = function () {
         var jcrop_api;
 
         // In this example, since Jcrop may be attached or detached
-        // at the whim of the user, I've wrapped the call into a function
+        // at the whim of the chef, I've wrapped the call into a function
         initJcrop();
         
         // The function is pretty simple
         function initJcrop()//{{{
         {
           // Hide any interface elements that require Jcrop
-          // (This is for the local user interface portion.)
+          // (This is for the local chef interface portion.)
           $('.requiresjcrop').hide();
 
           // Invoke Jcrop in typical fashion

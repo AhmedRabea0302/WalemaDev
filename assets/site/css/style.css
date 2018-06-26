@@ -1009,14 +1009,15 @@ img{
     outline: 0;
 }
 
-.user-content-wrapper form a {
+.user-content-wrapper form .btn-primary {
     background: #e7604a;
     font-weight: 500;
     border: 1px solid #e7604a;
     font-size: 16px;
+    margin-bottom: 60px;
 }
 
-.user-content-wrapper form a:hover {
+.user-content-wrapper form .btn-primary:hover {
     background: #e7504a;
     border: 1px solid #e7604a;
 }

@@ -39,8 +39,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         // Users Page
         Route::get('/users', 'UserController@getIndex')->name('admin.users');
         Route::post('/users', 'UserController@postAddUser')->name('admin.add_user');
-        Route::post('/update-user', 'UserController@postUpdateUser')->name('admin.update_user');
-        Route::post('/delete-user', 'UserController@postDeleteUser')->name('admin.delete_user');
+        Route::post('/update-chef', 'UserController@postUpdateUser')->name('admin.update_user');
+        Route::post('/delete-chef', 'UserController@postDeleteUser')->name('admin.delete_user');
 
         // Cities and Kitchens Types
         Route::get('/cities_and_types', 'CityController@getIndex')->name('admin.cities_and_types');
@@ -180,6 +180,20 @@ Route::group(['namespace' => 'Site'], function() {
     Route::get('/registration', 'RegisterController@getIndex')->name('site.getRegister');
     Route::post('/registration', 'RegisterController@postRegister')->name('site.postRegister');
 
+    Route::post('/login', 'LoginController@postLogin')->name('site.postLogin');
+
+    // Logout Route
+    Route::get('/logout', 'RegisterController@getLogout')->name('site.getLogout');
+
+    // Chef Profile Routes
+    Route::get('/chef-profile/{id}', 'ChefController@getIndex')->name('site.chef-profile');
+    Route::get('/update-chef-profile/{id}', 'ChefController@getUpdateChefProfile')->name('site.update-chef-profile');
+
+    Route::post('/update-chef-profile/{id}', 'ChefController@postUpdateChefProfile')->name('site.post-update-chef');
+
+    // Meal Routes
+    Route::get('/add-meal', 'MealController@getIndex')->name('site.add-meal');
+    Route::post('/add-meal', 'MealController@postAddMeal')->name('site.postAddMeal');
 
 
 

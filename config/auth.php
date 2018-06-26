@@ -25,11 +25,11 @@ return [
     |
     | Next, you may define every authentication guard for your application.
     | Of course, a great default configuration has been defined for you
-    | here which uses session storage and the Eloquent user provider.
+    | here which uses session storage and the Eloquent chef provider.
     |
-    | All authentication drivers have a user provider. This defines how the
+    | All authentication drivers have a chef provider. This defines how the
     | users are actually retrieved out of your database or other storage
-    | mechanisms used by this application to persist your user's data.
+    | mechanisms used by this application to persist your chef's data.
     |
     | Supported: "session", "token"
     |
@@ -52,6 +52,11 @@ return [
             'driver' => 'token',
             'provider' => 'members',
         ],
+
+        'chef' => [
+            'driver' => 'session',
+            'provider' => 'chefs',
+        ],
 ],
 
 
@@ -60,11 +65,11 @@ return [
     | User Providers
     |--------------------------------------------------------------------------
     |
-    | All authentication drivers have a user provider. This defines how the
+    | All authentication drivers have a chef provider. This defines how the
     | users are actually retrieved out of your database or other storage
-    | mechanisms used by this application to persist your user's data.
+    | mechanisms used by this application to persist your chef's data.
     |
-    | If you have multiple user tables or models you may configure multiple
+    | If you have multiple chef tables or models you may configure multiple
     | sources which represent each model / table. These sources may then
     | be assigned to any extra authentication guards you have defined.
     |
@@ -81,6 +86,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Member::class,
         ],
+        'chefs' => [
+            'driver' => 'eloquent',
+            'model' => App\Chef::class,
+        ],
     ],
 
     /*
@@ -89,8 +98,8 @@ return [
     |--------------------------------------------------------------------------
     |
     | You may specify multiple password reset configurations if you have more
-    | than one user table or model in the application and you want to have
-    | separate password reset settings based on the specific user types.
+    | than one chef table or model in the application and you want to have
+    | separate password reset settings based on the specific chef types.
     |
     | The expire time is the number of minutes that the reset token should be
     | considered valid. This security feature keeps tokens short-lived so

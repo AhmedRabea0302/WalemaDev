@@ -87,7 +87,7 @@
 
             {{--<li @if(Request::route()->getName() == 'admin.doctors') class="active" @endif class="nav-item">--}}
                 {{--<a href="{{ route('admin.doctors') }}" class="nav-link nav-toggle">--}}
-                    {{--<i class="fa fa-user-md"></i>--}}
+                    {{--<i class="fa fa-chef-md"></i>--}}
                     {{--<span class="title">الأطباء</span>--}}
                 {{--</a>--}}
             {{--</li>--}}

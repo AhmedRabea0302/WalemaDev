@@ -5,7 +5,7 @@ var ComponentsContextMenu = function () {
             target: '#context-menu2',
             before: function (e) {
                 // This function is optional.
-                // Here we use it to stop the event if the user clicks a span
+                // Here we use it to stop the event if the chef clicks a span
                 e.preventDefault();
                 if (e.target.tagName == 'SPAN') {
                     e.preventDefault();

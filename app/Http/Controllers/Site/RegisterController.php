@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Chef;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 
 class RegisterController extends Controller
@@ -38,7 +39,7 @@ class RegisterController extends Controller
             ]);
 //
             if($validator->fails()) {
-                return ['status' => false ,'data' => implode(PHP_EOL, $validator->errors()->all())];
+                return ['status' => false ,'data' => implode(PHP_EOL, $validator->errors()->all()), 'id' => 'warna'];
             }
 
             $chef->name          = $request->chef_name;
@@ -48,12 +49,17 @@ class RegisterController extends Controller
 
             $chef->save();
 
-            return ['status' => 'success', 'data' => 'تم التسجيل بنجاح', 'id' => 'warna'];
+            return ['status' => 'success', 'data' => 'تم إنشاء الحساب بنجاح, يمكنك تسجيل الدخول الآن', 'id' => 'warna'];
 
         } else {
             dd('not');
         }
 
 
+    }
+
+    public function getLogout() {
+        Auth::gurad('chef')->logout();
+        return redirect()->route('site.getRegister');
     }
 }

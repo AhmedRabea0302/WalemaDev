@@ -3,7 +3,11 @@
     <!-- =================== Navbar Section ============ -->
     <section class="register">
         <div class="register">
+
             <div class="register-form">
+                <div id="warna">
+
+                </div>
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active">
                         <a href="#signIn" aria-controls="home" role="tab" data-toggle="tab">
@@ -25,32 +29,31 @@
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <form role="tabpanel" class="tab-pane fade in active" id="signIn">
+
+                    <form method="post" action="{{ route('site.postLogin') }}" role="tabpanel" class="tab-pane fade in active" id="signIn">
+                        {{ csrf_field() }}
                         <h3 class="form-title">تسجيل دخول</h3>
                         <div class="form-group">
-                            <label>اسم المستخدم</label>
-                            <input class="form-control" value="" type="text" placeholder="ادخل اسم المستخدم">
+                            <label>البريد الإلكتروني</label>
+                            <input name="email" class="form-control" value="" type="text" placeholder="ادخل اسم المستخدم">
                         </div>
                         <div class="form-group">
                             <label>الرقم السري</label>
-                            <input class="form-control" value="" type="password" placeholder="ادخل الرقم السري">
+                            <input name="password" class="form-control" value="" type="password" placeholder="ادخل الرقم السري">
                         </div>
 
                         <div class="form-group">
-                            <select class="form-control selectaboxa">
-                                <option value="">طباخ</option>
-                                <option value="">مستخدم عادي</option>
+                            <select name="type" class="form-control selectaboxa">
+                                <option value="طباخ">طباخ</option>
+                                <option value="مستخدم عادي">مستخدم عادي</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-primary form-control"> دخول</button>
+                            <input type="submit" class="btn btn-primary form-control" value="دخول" />
                         </div>
 
-                        <div class="forget">
-                            <a href="#"> هل نسيت الرقم السري ؟</a>
-                        </div>
                     </form>
-                    <form method="post" action="{{ route('site.postRegister') }}" role="tabpanel" class="tab-pane fade in" id="signUp">
+                    <form method="post" action="{{ route('site.postRegister') }}" role="tabpanel" onsubmit="return false;" class="register-forma tab-pane fade in" id="signUp">
                         {{ csrf_field() }}
                         <h3 class="form-title">حساب جديد</h3>
                         <div class="row">
@@ -90,7 +93,7 @@
                         </div> <!-- End row -->
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <button class="btn btn-primary form-control"> تسجيل</button>
+                                <input type="submit" class="btn btn-primary form-control" value="تسجيل"/>
                             </div>
                         </div>
                     </form>
@@ -121,4 +124,7 @@
             </div> <!-- End register-form -->
         </div> <!-- End register -->
     </section><!-- End register -->
+@endsection
+@section('scripts')
+    <script src="{{asset('assets/site/js/ajax-validation.js')}}"></script>
 @endsection

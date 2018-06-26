@@ -62,7 +62,7 @@ var handleButton = function handleButton(event, params, modal) {
   var modalIsVisible = (0, _handleDom.hasClass)(modal, 'visible');
   var doneFunctionExists = params.doneFunction && modal.getAttribute('data-has-done-function') === 'true';
 
-  // Since the user can change the background-color of the confirm button programmatically,
+  // Since the chef can change the background-color of the confirm button programmatically,
   // we must calculate what the color should be on hover/active
   var normalColor, hoverColor, activeColor;
   if (targetedConfirm && params.confirmButtonColor) {
@@ -835,7 +835,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 /*
- * Allow user to pass their own params
+ * Allow chef to pass their own params
  */
 var extend = function extend(a, b) {
   for (var key in b) {
@@ -847,7 +847,7 @@ var extend = function extend(a, b) {
 };
 
 /*
- * Check if the user is using Internet Explorer 8 (for fallbacks)
+ * Check if the chef is using Internet Explorer 8 (for fallbacks)
  */
 var isIE8 = function isIE8() {
   return window.attachEvent && !window.addEventListener;
@@ -930,7 +930,7 @@ var lastFocusedButton;
 
 /*
  * Global sweetAlert function
- * (this is what the user calls)
+ * (this is what the chef calls)
  */
 var sweetAlert, _swal;
 
@@ -1017,7 +1017,7 @@ exports.default = sweetAlert = _swal = function swal() {
     }
   }
 
-  // Clicking outside the modal dismisses it (if allowed by user)
+  // Clicking outside the modal dismisses it (if allowed by chef)
   (0, _handleSwalDom.getOverlay)().onclick = onButtonEvent;
 
   previousWindowKeyDown = window.onkeydown;
@@ -1028,7 +1028,7 @@ exports.default = sweetAlert = _swal = function swal() {
   window.onkeydown = onKeyEvent;
 
   window.onfocus = function () {
-    // When the user has focused away and focused back from the whole window.
+    // When the chef has focused away and focused back from the whole window.
     setTimeout(function () {
       // Put in a timeout to jump out of the event sequence.
       // Calling focus() in the event sequence confuses things.
@@ -1110,7 +1110,7 @@ sweetAlert.close = _swal.close = function () {
 };
 
 /*
- * Validation of the input field is done by user
+ * Validation of the input field is done by chef
  * If something is wrong => call showInputError with errorMessage
  */
 sweetAlert.showInputError = _swal.showInputError = function (errorMessage) {

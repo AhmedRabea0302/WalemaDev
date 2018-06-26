@@ -171,7 +171,7 @@ function GeolocationControl(controlDiv, map) {
     controlText.innerHTML = ' ';
     controlUI.appendChild(controlText);
 
-    // Setup the click event listeners to geolocate user
+    // Setup the click event listeners to geolocate chef
     google.maps.event.addDomListener(controlUI, 'click', geolocate);
 
 }
@@ -285,7 +285,7 @@ function addSearchBox() {
         searchBox.setBounds(map.getBounds());
     });
 
-    // Listen for the event fired when the user selects a prediction and retrieve
+    // Listen for the event fired when the chef selects a prediction and retrieve
     // more details for that place.
     searchBox.addListener('places_changed', function() {
         var places = searchBox.getPlaces();

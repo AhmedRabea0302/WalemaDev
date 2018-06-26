@@ -599,7 +599,7 @@ var Dashboard = function() {
             $('body').on('click', '.message .name', function(e) {
                 e.preventDefault(); // prevent click event
 
-                var name = $(this).text(); // get clicked user's full name
+                var name = $(this).text(); // get clicked chef's full name
                 input.val('@' + name + ':'); // set it into the input field
                 App.scrollTo(input); // scroll to input if needed
             });
