@@ -8,22 +8,48 @@
             <div class="container">
                 <div class="row">
                     <div class="title-content text-center">
-                        <h1>دلع كرشك معانا</h1>
-                        <p>جد مجموعة من أفضل المطابخ لتوصيل الطعام الى بابك</p>
+                        <h1>إنجز عزومتك</h1>
+                        <p style="margin-bottom: 25px">جد مجموعة من أفضل المطابخ لإنجاز العزومة</p>
                     </div><!-- End title-content -->
 
-                    <div class="form-content">
-                        <form action="#">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <input class="form-control" type="text" placeholder="اختر المدينة">
-                                </div><!-- End col-xs-6 -->
-
-                                <div class="col-xs-6">
-                                    <input class="form-control" type="text" placeholder="اختر المطبح">
-                                </div><!-- End col-xs-6 -->
+                    <div class="form-contenta">
+                        <form action="{{ route('site.user_search') }}" method="post">
+                            {{ csrf_field() }}
+                            <div class="col-xs-6">
+                                <select name="govern" class="form-control selectaboxa" id="sel1">
+                                    <option value="">المحافظه</option>
+                                    @foreach($governs as $govern)
+                                        <option value="{{ $govern->city }}">{{ $govern->city }}</option>
+                                    @endforeach
+                                </select>
                             </div>
+
+                            <div class="col-xs-6">
+                                <select name="type" class="form-control selectaboxa" id="sel1">
+                                    <option value="">نوع المطبخ</option>
+                                    @foreach($types as $type)
+                                        <option value="{{ $type->type }}">{{ $type->type }}</option>
+                                    @endforeach
+                                </select>
+                            </div><!-- End col-xs-6 -->
+                            <input type="submit" style="border-top: 2px solid #fff" value="بحث" class="form-btn form-control" />
+
                         </form>
+                    </div>
+
+                    <div class="form-contenta">
+                        <p style="margin-bottom: 15px">أو يمكنك البحث بإسم الوجبة</p>
+
+                        <form action="">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" placeholder="اسم الوجبة"/>
+                            </div>
+
+                            <input type="submit" style="border-top: 2px solid #fff" value="بحث" class="form-btn form-control" />
+
+                        </form>
+                    </div>
+
                     </div><!-- End form-content -->
                 </div><!-- End Row -->
             </div><!-- End Container -->

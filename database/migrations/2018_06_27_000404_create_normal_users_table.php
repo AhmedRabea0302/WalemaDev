@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateChefsTable extends Migration
+class CreateNormalUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateChefsTable extends Migration
      */
     public function up()
     {
-        Schema::create('chefs', function (Blueprint $table) {
+        Schema::create('normal_users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('password');
@@ -21,14 +21,11 @@ class CreateChefsTable extends Migration
             $table->string('email');
             $table->string('image_name')->nullable();
             $table->string('phone')->nullable();
-            $table->string('kitchen_type')->nullable();
-            $table->string('kitchen_govern')->nullable();
-            $table->string('min_order')->nullable();
             $table->string('address')->nullable();
+            $table->string('govern')->nullable();
             $table->string('street')->nullable();
-            $table->boolean('status')->nullable();
+            $table->boolean('status')->nullable()->default(0);
             $table->text('description')->nullable();
-            $table->text('remember_token')->nullable();
             $table->timestamps();
         });
     }
@@ -40,6 +37,6 @@ class CreateChefsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chefs');
+        Schema::dropIfExists('normal_users');
     }
 }

@@ -57,6 +57,11 @@ return [
             'driver' => 'session',
             'provider' => 'chefs',
         ],
+
+        'normaluser' => [
+            'driver' => 'session',
+            'provider' => 'normal_users',
+        ],
 ],
 
 
@@ -90,6 +95,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\Chef::class,
         ],
+        'normal_users' => [
+            'driver' => 'eloquent',
+            'model' => App\NormalUser::class,
+        ],
+
     ],
 
     /*

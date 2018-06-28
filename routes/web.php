@@ -182,7 +182,7 @@ Route::group(['namespace' => 'Site'], function() {
 
     Route::post('/login', 'LoginController@postLogin')->name('site.postLogin');
 
-    // Logout Route
+    // Chef Logout Route
     Route::get('/logout', 'RegisterController@getLogout')->name('site.getLogout');
 
     // Chef Profile Routes
@@ -200,6 +200,21 @@ Route::group(['namespace' => 'Site'], function() {
 
     Route::post('/delete-meal/{id}/', 'MealController@deleteMeal')->name('site.deleteMeal');
 
+    // Normal User Routes
+    Route::get('/user-profile/{id}', 'UserController@getIndex')->name('site.user-profile');
+    Route::get('/update-user-profile/{id}', 'UserController@getUserProfile')->name('site.get-update-user-profile');
+
+    Route::post('/update-user-profile/{id}', 'UserController@postUserProfile')->name('site.postUpdateUser');
+
+    // Normal User Logout Route
+    Route::get('/logouta', 'UserController@getLogout')->name('site.userGetLogout');
+
+    // Normal User Search
+    Route::post('/user-search/', 'UserController@postSearch')->name('site.user_search');
+    Route::get('/kitchen/{ch_id}', 'UserController@getOneKitchen')->name('site.get_one_kitchen');
+
+    // Add To Cart Routes
+    Route::get('add-to-cart/{id}/{ch_id}', 'UserController@getAddCart')->name('site.add_to_cart');
 
 
 //    Route::post('/contact', 'HomeController@postSendMessage')->name('Site.send_message');

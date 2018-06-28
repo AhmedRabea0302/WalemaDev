@@ -35,6 +35,30 @@ class LoginController extends Controller
                 return redirect()->back();
             }
 
+        } else {
+            $rules = [
+                'email' => 'required',
+                'password' => 'required',
+            ];
+            //
+            $validator = Validator::make($request->all(), $rules, [
+                'email.required' => 'من فضك أدخل البريد الإلكتروني',
+                'password.required' => 'من فضلك أدخل كلمة السر',
+            ]);
+
+            if ($validator->fails()) {
+                return ['status' => false, 'data' => implode(PHP_EOL, $validator->errors()->all()), 'id' => 'warna'];
+            }
+
+            if (auth()->guard('normaluser')->attempt(['email' => $request->email, 'password' => $request->password])) {
+
+                return redirect()->route('site.user-profile', ['id' => auth()->guard('normaluser')->user()->id]);
+            }
+
+            else {
+                return redirect()->back();
+            }
         }
+
     }
 }

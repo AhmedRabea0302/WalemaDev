@@ -13,6 +13,8 @@
                         <li><a href="#">المدونة</a></li>
                         @if(auth()->guard('chef')->user())<li><a href="{{ route('site.getLogout') }}">تسجيل الخروج</a></li>@endif
                         @if(!auth()->guard('chef')->user())<li><a href="{{ route('site.getRegister') }}">تسجيل الدخول</a></li>@endif
+                        @if(auth()->guard('normaluser')->user())<li><a href="{{ route('site.userGetLogout') }}">تسجيل الخروج</a></li>@endif
+                        @if(!auth()->guard('normaluser')->user())<li><a href="{{ route('site.getRegister') }}">تسجيل الدخول</a></li>@endif
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div>
