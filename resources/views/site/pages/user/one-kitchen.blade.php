@@ -132,7 +132,7 @@
                             </dl>
 
                             <div class="checkout">
-                                <a href="{{ route('site.post_add_order', ['id' => auth()->guard('normaluser')->user()->id,'ch_id' => $kitchen->id]) }}" class="btn btn-primary btn-block custom-checkout">أكمل الطلب</a>
+                                <a href="{{ route('site.order_process', ['id' => auth()->guard('normaluser')->user()->id,'ch_id' => $kitchen->id]) }}" class="btn btn-primary btn-block custom-checkout">أكمل الطلب</a>
                             </div>
                         </div><!-- End left-block-content -->
                     </div><!-- End side-left-block -->

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Site;
 use App\Chef;
 use App\City;
 use App\Meal;
+use App\NormalUser;
+use App\Order;
 use App\Type;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -78,5 +80,31 @@ class ChefController extends Controller
 
         return ['status' => 'success', 'data' => 'تم تعديل بياناتك بنجاح', 'id' => 'warna'];
 
+    }
+
+    public function getChefOrders(Request $request, $id) {
+        $chef = Chef::find($id);
+        $orders = Order::where('chef_id', $id)->get();
+        return view('site.pages.chef.orders', compact('chef', 'orders'));
+    }
+
+    public function getChefSingleOrder(Request $request, $id, $order_id) {
+        $chef = Chef::find($id);
+        $order  = Order::find($order_id);
+        $orders = Order::where('id', $order_id)->get();
+
+        $orders->transform(function ($ord, $key) {
+            $ord->cart = unserialize($ord->cart);
+            return $ord;
+        });
+
+        return view('site.pages.chef.single-order', compact('chef', 'order', 'orders'));
+    }
+
+    public function updateChefSingleOrder(Request $request, $id) {
+        $order  = Order::find($id);
+        $order->status =  $request->status;
+        $order->save();
+        return back();
     }
 }

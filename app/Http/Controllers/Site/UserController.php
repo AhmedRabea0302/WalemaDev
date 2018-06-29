@@ -7,6 +7,7 @@ use App\Cart;
 use App\Meal;
 use App\NormalUser;
 use App\Order;
+use Faker\Provider\cs_CZ\DateTime;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -123,10 +124,41 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+    public function getOrderProcess(Request $request, $id, $ch_id) {
+        $kitchen = Chef::find($ch_id);
+
+        return view('site.pages.user.order-process', compact('kitchen'));
+    }
+
     public function postAddOrder(Request $request, $id, $ch_id) {
         if(!session()->has('cart')) {
 
         }
+
+//        $rules = [
+//            'name' => 'required',
+//            'email' => 'required',
+//            'address' => 'required',
+//            'govern' => 'required',
+//            'phone' => 'required',
+//            'street' => 'required',
+//            'desc' => 'required',
+//
+//        ];
+//        //
+//        $validator = Validator::make($request->all(), $rules, [
+//            'name.required' => 'من فضك أدخل الاسم',
+//            'email.required' => 'من فضك أدخل البريد الإلكتروني',
+//            'address.required' => 'من فضك أدخل العنوان',
+//            'govern.required' => 'من فضك أدخل البريد المحافظة',
+//            'phone.required' => 'من فضك أدخل الهاتف',
+//            'street.required' => 'من فضك أدخل الشارع',
+//            'desc.required' => 'من فضك أدخل نبذه عنك',
+//        ]);
+
+//        if ($validator->fails()) {
+//            return ['status' => false, 'data' => implode(PHP_EOL, $validator->errors()->all()), 'id' => 'warna'];
+//        }
 
         $oldCart = session()->get('cart');
         $cart    = new Cart($oldCart);
@@ -135,6 +167,12 @@ class UserController extends Controller
         $order->cart    = serialize($cart);
         $order->user_id = $id;
         $order->chef_id = $ch_id;
+        $order->deliver_date = $request->deliver_date;
+        $order->deliver_time = $request->deliver_time;
+        $order->deliver_address = $request->deliver_address;
+        $order->deliver_plat_number = $request->deliver_plat_number;
+        $order->deliver_part_number = $request->deliver_part_number;
+        $order->order_requirements = $request->order_requirements;
 
         $order->save();
 

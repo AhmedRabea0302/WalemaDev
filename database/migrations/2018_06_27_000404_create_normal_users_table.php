@@ -26,6 +26,7 @@ class CreateNormalUsersTable extends Migration
             $table->string('street')->nullable();
             $table->boolean('status')->nullable()->default(0);
             $table->text('description')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }

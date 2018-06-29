@@ -46,7 +46,7 @@
 
                                 <div class="content">
                                     <h5>{{ $kitchen->name }}</h5>
-                                    <p>{{ substr($kitchen->description, 0, 105) }}...</p>
+                                    <p>{{ substr($kitchen->description, 0, 100) }}...</p>
                                     <p class="clearfix"><span class="pull-right icon"><i class="fa fa-long-arrow-left"></i></span><span class="min-order">أقل طلب: </span> <span class="price">{{ $kitchen->min_order }}LE</span></p>
                                 </div>
 

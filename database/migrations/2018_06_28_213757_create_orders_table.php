@@ -17,8 +17,14 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('chef_id');
-            $table->text('cart');
+            $table->string('deliver_date');
+            $table->string('deliver_time');
+            $table->string('deliver_address');
+            $table->string('deliver_plat_number');
+            $table->string('deliver_part_number');
             $table->string('status');
+            $table->text('cart');
+            $table->text('order_requirements');
             $table->timestamps();
         });
     }

@@ -190,6 +190,10 @@ Route::group(['namespace' => 'Site'], function() {
     Route::get('/update-chef-profile/{id}', 'ChefController@getUpdateChefProfile')->name('site.update-chef-profile');
 
     Route::post('/update-chef-profile/{id}', 'ChefController@postUpdateChefProfile')->name('site.post-update-chef');
+    Route::get('/chef-orders/{id}/', 'ChefController@getChefOrders')->name('site.get_chef_orders');
+    Route::get('/order/{id}/{order_id}/', 'ChefController@getChefSingleOrder')->name('site.get_single_order');
+
+    Route::post('/order/{id}/', 'ChefController@updateChefSingleOrder')->name('site.update_order_status');
 
     // Meal Routes
     Route::get('/add-meal/{id}', 'MealController@getIndex')->name('site.add-meal');
@@ -217,10 +221,12 @@ Route::group(['namespace' => 'Site'], function() {
 
     // Add To Cart Routes
     Route::get('add-to-cart/{id}/{ch_id}', 'UserController@getAddCart')->name('site.add_to_cart');
-    Route::get('add-order/{id}/{ch_id}', 'UserController@postAddOrder')->name('site.post_add_order');
+    Route::post('add-order/{id}/{ch_id}', 'UserController@postAddOrder')->name('site.post_add_order');
 
     Route::get('increase-by-one/{id}/{ch_id}', 'UserController@getIncreaseByOne')->name('site.increase-one');
     Route::get('reduce-by-one/{id}/{ch_id}', 'UserController@getReduceByOne')->name('site.reduce-one');
+
+    Route::get('order-process/{id}/{ch_id}', 'UserController@getOrderProcess')->name('site.order_process');
 
 
 //    Route::post('/contact', 'HomeController@postSendMessage')->name('Site.send_message');

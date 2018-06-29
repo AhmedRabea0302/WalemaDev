@@ -22,6 +22,7 @@
                         <ul class="admin-user-menu">
                             <li><a href="{{ route('site.chef-profile',  ['id' => $chef->id]) }}"><i class="fa fa-tachometer"></i>لوحة التحكم</a></li>
                             <li><a href="{{ route('site.update-chef-profile',  ['id' => $chef->id]) }}) }}" class="active"><i class="fa fa-user"></i>الملف الشخصي</a></li>
+                            <li><a href="{{ route('site.get_chef_orders', ['id' => $chef->id]) }}"><i class="fa fa-check"></i>الطلبات</a></li>
                             <li><a href="#"><i class="fa fa-delicious"></i>التقييمات</a></li>
                             <li><a href="{{ route('site.getLogout') }}"><i class="fa fa-sign-out"></i>تسجيل الخروج</a></li>
                         </ul>

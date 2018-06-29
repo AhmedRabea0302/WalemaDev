@@ -2261,6 +2261,56 @@ img{
     text-decoration: none;
     color: #e7604a;
 }
+
+/********************* Order Process Page ********************/
+.order_process {
+    padding: 80px 0;
+}
+
+.order_process legend {
+    padding-bottom: 15px;
+}
+
+.order_process .require h4 {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e5e5e5;
+    color: #333;
+    margin-top: 11px;
+    margin-bottom: 30px;
+}
+
+.order_process .require textarea {
+    width: 100%;
+    height: 70px;
+    padding: 10px;
+    resize: none;
+    border: 1px solid #d1d1d1;
+}
+
+.order_process .order-delivery-address {
+    padding-right: 25px;
+    padding-top: 45px;
+}
+
+.order_process .order-delivery-address h4 {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e5e5e5;
+    color: #333;
+    margin-top: 11px;
+    margin-bottom: 30px;
+}
+
+.order_process .order-delivery-address ul li {
+    margin-bottom: 15px;
+
+}
+
+.order_process .order-delivery-address ul li input {
+    margin-bottom: 10px;
+    padding: 0 10px;
+    width: 100%;
+    border: 1px solid #d1d1d1;
+}
     /********************* Register and Sign and Contact ********************/
 /* register
 ================================== */
