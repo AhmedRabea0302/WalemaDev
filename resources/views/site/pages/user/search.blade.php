@@ -39,7 +39,7 @@
                 @foreach($kitchens as $kitchen)
                     <div class="col-md-3 col-sm-6">
                         <div class="one-kitchen">
-                            <a href="{{ route('site.get_one_kitchen', ['ch_id' => $kitchen->id]) }}">
+                            <a href="{{ route('site.get_one_kitchen', ['id' => auth()->guard('normaluser')->user()->id, 'ch_id' => $kitchen->id]) }}">
                                 <div class="image">
                                     <img src="{{ url('storage/uploads/chefs-profile-images/') . '/' . $kitchen->image_name }}" alt="">
                                 </div>

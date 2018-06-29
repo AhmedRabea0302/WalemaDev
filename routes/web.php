@@ -203,6 +203,8 @@ Route::group(['namespace' => 'Site'], function() {
     // Normal User Routes
     Route::get('/user-profile/{id}', 'UserController@getIndex')->name('site.user-profile');
     Route::get('/update-user-profile/{id}', 'UserController@getUserProfile')->name('site.get-update-user-profile');
+    Route::get('/user-orders/{id}', 'UserController@getUserOrders')->name('site.get-user-orders');
+
 
     Route::post('/update-user-profile/{id}', 'UserController@postUserProfile')->name('site.postUpdateUser');
 
@@ -211,10 +213,14 @@ Route::group(['namespace' => 'Site'], function() {
 
     // Normal User Search
     Route::post('/user-search/', 'UserController@postSearch')->name('site.user_search');
-    Route::get('/kitchen/{ch_id}', 'UserController@getOneKitchen')->name('site.get_one_kitchen');
+    Route::get('/kitchen/{id}/{ch_id}', 'UserController@getOneKitchen')->name('site.get_one_kitchen');
 
     // Add To Cart Routes
     Route::get('add-to-cart/{id}/{ch_id}', 'UserController@getAddCart')->name('site.add_to_cart');
+    Route::get('add-order/{id}/{ch_id}', 'UserController@postAddOrder')->name('site.post_add_order');
+
+    Route::get('increase-by-one/{id}/{ch_id}', 'UserController@getIncreaseByOne')->name('site.increase-one');
+    Route::get('reduce-by-one/{id}/{ch_id}', 'UserController@getReduceByOne')->name('site.reduce-one');
 
 
 //    Route::post('/contact', 'HomeController@postSendMessage')->name('Site.send_message');

@@ -6,6 +6,7 @@ use App\Chef;
 use App\Cart;
 use App\Meal;
 use App\NormalUser;
+use App\Order;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -101,6 +102,48 @@ class UserController extends Controller
         $cart->add($meal, $meal->id);
         $request->session()->put('cart', $cart);
         return redirect()->back();
+
+    }
+
+    public function getReduceByOne($id) {
+        $oldCart = session()->has('cart') ? session()->get('cart') : null;
+        $cart    = new Cart($oldCart);
+        $cart->reduceByOne($id);
+
+        session()->put('cart', $cart);
+        return redirect()->back();
+    }
+
+    public function getIncreaseByOne($id) {
+        $oldCart = session()->has('cart') ? session()->get('cart') : null;
+        $cart    = new Cart($oldCart);
+        $cart->increaseByOne($id);
+
+        session()->put('cart', $cart);
+        return redirect()->back();
+    }
+
+    public function postAddOrder(Request $request, $id, $ch_id) {
+        if(!session()->has('cart')) {
+
+        }
+
+        $oldCart = session()->get('cart');
+        $cart    = new Cart($oldCart);
+
+        $order = new Order();
+        $order->cart    = serialize($cart);
+        $order->user_id = $id;
+        $order->chef_id = $ch_id;
+
+        $order->save();
+
+        session()->forget('cart');
+
+        return view('site.pages.user.order-complete');
+    }
+
+    public function getUserOrders(Request $request, $id) {
 
     }
 

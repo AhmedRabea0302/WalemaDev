@@ -21,4 +21,8 @@ class NormalUser extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password'
     ];
+
+    public function orders() {
+        return $this->hasMany('App\Order', 'user_id');
+    }
 }

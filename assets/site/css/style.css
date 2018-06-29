@@ -2224,8 +2224,44 @@ img{
     color: #e7604a;
 }
 
+/************ Completion Page ***************/
+.completion {
+    padding: 80px 0;
+    text-align: center;
+}
 
-/********************* Register and Sign and Contact ********************/
+.completion span .fa {
+    color: #fff;
+    background: #e7604a;
+    padding: 15px 14px 12px 14px;
+    font-size: 28px;
+    border-radius: 14em;
+    width: 60px;
+    height: 60px;
+}
+
+.completion h2 {
+    color: #333;
+    margin-top: 10px;
+    font-weight: lighter;
+    font-size: 24px;
+    width: 100%;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(177, 177, 173, 0.3);
+}
+
+.completion p {
+    color: #333;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.completion p a {
+    font-weight: 600;
+    text-decoration: none;
+    color: #e7604a;
+}
+    /********************* Register and Sign and Contact ********************/
 /* register
 ================================== */
 .register{

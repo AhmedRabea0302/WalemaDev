@@ -104,11 +104,12 @@
                                 @if(session()->has('cart'))
                                 <?php $cart_meals = session()->get('cart')->items ?>
                                     @foreach($cart_meals= session()->get('cart')->items as $cart)
+                                        {{--{{ dd($cart) }}--}}
                                         <li class="clearfix">
                                             <div class="pull-left">
                                                 <div class="update-product">
-                                                    <a title="Add a product" href="#"><i class="fa fa-plus-circle"></i></a>
-                                                    <a title="Minus a product" href="#"><i class="fa fa-minus-circle"></i></a>
+                                                    <a title="Add a product" href="{{ route('site.increase-one', ['id' => $cart['item']['id'], 'ch_id' => $kitchen->id]) }}"><i class="fa fa-plus-circle"></i></a>
+                                                    <a title="Minus a product" href="{{ route('site.reduce-one', ['id' => $cart['item']['id'], 'ch_id' => $kitchen->id]) }}"><i class="fa fa-minus-circle"></i></a>
                                                 </div>
                                             </div>
                                             <div class="cart-product-name pull-left"> {{ $cart['item']['name'] }} ({{ $cart['qty'] }}) </div>
@@ -131,7 +132,7 @@
                             </dl>
 
                             <div class="checkout">
-                                <button type="submit" class="btn btn-primary btn-block custom-checkout">أكمل الطلب</button>
+                                <a href="{{ route('site.post_add_order', ['id' => auth()->guard('normaluser')->user()->id,'ch_id' => $kitchen->id]) }}" class="btn btn-primary btn-block custom-checkout">أكمل الطلب</a>
                             </div>
                         </div><!-- End left-block-content -->
                     </div><!-- End side-left-block -->
