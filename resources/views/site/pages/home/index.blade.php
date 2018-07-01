@@ -133,7 +133,7 @@
                             <div class="middle-grid">
                                 <div class="col-xs-4">
                                     <div class="content">
-                                        <h4>أم ميمي برجر</h4>
+                                        <h4>أم ميمي </h4>
                                         <p>مصري</p>
                                     </div><!-- End content -->
                                 </div><!-- End col-xs-6 -->
@@ -158,7 +158,7 @@
                             <div class="middle-grid">
                                 <div class="col-xs-4">
                                     <div class="content">
-                                        <h4>أم ميمي برجر</h4>
+                                        <h4>أم سامح</h4>
                                         <p>مصري</p>
                                     </div><!-- End content -->
                                 </div><!-- End col-xs-6 -->
@@ -183,7 +183,7 @@
                             <div class="middle-grid">
                                 <div class="col-xs-4">
                                     <div class="content">
-                                        <h4>أم ميمي برجر</h4>
+                                        <h4>أم تامر</h4>
                                         <p>مصري</p>
                                     </div><!-- End content -->
                                 </div><!-- End col-xs-6 -->
@@ -208,7 +208,7 @@
                             <div class="middle-grid">
                                 <div class="col-xs-4">
                                     <div class="content">
-                                        <h4>أم ميمي برجر</h4>
+                                        <h4>أم تغريد</h4>
                                         <p>مصري</p>
                                     </div><!-- End content -->
                                 </div><!-- End col-xs-6 -->
@@ -233,7 +233,7 @@
                             <div class="middle-grid">
                                 <div class="col-xs-4">
                                     <div class="content">
-                                        <h4>أم ميمي برجر</h4>
+                                        <h4>أم ميمي </h4>
                                         <p>مصري</p>
                                     </div><!-- End content -->
                                 </div><!-- End col-xs-6 -->
@@ -288,7 +288,7 @@
                                 <div class="image">
                                     <img src="{{asset('assets/site/images/tree.png')}}" alt="vantage logo">
                                 </div>
-                                <h5>أم صقر</h5>
+                                <h5>أم مالك</h5>
                                 <a href="#">اطلب الآن</a>
                             </div>
                         </div><!-- End col-xs-6 -->
@@ -307,7 +307,7 @@
                                 <div class="image">
                                     <img src="{{asset('assets/site/images/gree.png')}}" alt="vantage logo">
                                 </div>
-                                <h5>أم ميمي</h5>
+                                <h5>أم ربيع</h5>
                                 <a href="#">اطلب الآن</a>
                             </div>
                         </div><!-- End col-xs-6 -->
@@ -333,7 +333,7 @@
             <div class="row">
                 <div class="content">
                     <h2 class="text-center">
-                        هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض النوادر أو الكلمات العشوائية إلى النص.
+                        وليمه هيساعدك تلاقي عشرات المطابخ الموثوقه من خلال تقييمات مئات المستخدمين
                     </h2>
                 </div><!-- End content -->
             </div><!-- End row -->

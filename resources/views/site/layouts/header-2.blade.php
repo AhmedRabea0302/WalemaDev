@@ -7,12 +7,10 @@
             <div class="col-md-9 col-xs-12">
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ route('site.home') }}">الرئيسية <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">المطابخ</a></li>
-                        <li><a href="#">من نحن</a></li>
-                        <li><a href="#">المدونة</a></li>
-                        @if(auth()->guard('normaluser')->user())<li><a href="{{ route('site.userGetLogout') }}">تسجيل الخروج</a></li>@endif
-                        @if(!auth()->guard('normaluser')->user())<li><a href="{{ route('site.getRegister') }}">تسجيل الدخول</a></li>@endif
+                        <li><a href="{{ route('site.chef-profile', ['id' => auth()->guard('chef')->user()->id]) }}">المطبخ</a></li>
+
+                        @if(auth()->guard('chef')->user())<li><a href="{{ route('site.getLogout') }}">تسجيل الخروج</a></li>@endif
+                        @if(!auth()->guard('chef')->user())<li><a href="{{ route('site.getRegister') }}">تسجيل الدخول</a></li>@endif
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div>
@@ -26,7 +24,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="" href="{{ route('site.home') }}">
+                        <a class="" href="#">
                             <img class="center-block img-responsive" src="{{asset('assets/site/images/logo.png')}}" alt="Walema Logo">
                         </a>
                     </div>

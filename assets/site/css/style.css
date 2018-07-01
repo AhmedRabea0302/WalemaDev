@@ -2311,7 +2311,109 @@ img{
     width: 100%;
     border: 1px solid #d1d1d1;
 }
-    /********************* Register and Sign and Contact ********************/
+
+/********************* Rating Page ********************/
+
+.rating{
+    padding: 80px 0 ;
+    background-color: #DDD
+}
+.rate{
+    padding: 20px 0;
+    border-bottom: 1px dotted #DDD;
+    position: relative;
+}
+.rate:nth-of-type(1):after{
+    position: absolute;
+    content: "";
+    top: 20px;
+    right: -15px;
+    width: 1px;
+    height: 90%;
+    background-color: #DDD
+}
+.rate-head img{
+    width: 250px;
+    height: 150px;
+    margin: auto;
+    border: 1px solid #e5e5e5;
+}
+.rate-content{
+    margin-top: 20px
+}
+
+.rate-content h4 {
+    color: #333;
+    font-weight: 600;
+}
+
+.rate-content select{
+    margin-top: 10px;
+    width: 100px;
+    margin-bottom: 15px;
+}
+.rate-content form .btn-danger {
+    border: none;
+    background: #e7604a;
+    border-radius: 2px;
+}
+.bor{
+    box-shadow: 1px 1px 2px 2px #aaaaaa;
+    background-color: #FFF
+}
+.rating .message{
+    padding: 30px 0;
+    text-align: right;
+    text-align: center;
+}
+.rating .message label{
+    margin-bottom: 20px
+}
+.rating .message .btn-danger{
+    border: none;
+    background-color: #e7604a;
+    margin: 20px 0 ;
+    padding: 5px 35px;
+    border-radius: 2px
+}
+
+/********************* Rates Page ********************/
+
+/* ------ section order-rate ------ */
+.order-rate{
+    padding: 80px 0;
+}
+.order-rate .comments{
+    padding: 20px;
+    border: 1px solid #DDD;
+    box-shadow: 1px 1px 2px 2px #aaaaaa;
+}
+.order-rate .comment p{
+    margin: 15px 0;
+}
+.order-rate .comment .info i{
+    margin-left: 10px;
+    color: #e7604a;
+    margin-bottom: 20px
+}
+.order-rate .comment .info .stars span{
+    margin-left: 3px
+}
+.checked {
+    color: orange;
+}
+.order-rate .comment .image{
+    width: 150px;
+    height: 150px;
+    float: left;
+}
+.order-rate .comment .image img{
+    padding: 2px;
+    border: 1px solid #e5e5e5;
+}
+
+
+/********************* Register and Sign and Contact ********************/
 /* register
 ================================== */
 .register{

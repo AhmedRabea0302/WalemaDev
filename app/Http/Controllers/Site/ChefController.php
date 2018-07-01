@@ -7,6 +7,7 @@ use App\City;
 use App\Meal;
 use App\NormalUser;
 use App\Order;
+use App\Ratea;
 use App\Type;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -107,4 +108,12 @@ class ChefController extends Controller
         $order->save();
         return back();
     }
+
+    public function getChefRates($id) {
+        $chef  = Chef::find($id);
+        $rates = Ratea::where('chef_id', $chef->id)->get();
+
+        return view('site.pages.chef.rates', compact('chef', 'rates'));
+    }
 }
+

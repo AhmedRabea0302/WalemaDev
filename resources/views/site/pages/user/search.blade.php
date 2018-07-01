@@ -31,7 +31,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h3>254 مطعم</h3>
+                    <h3>{{ $kitchens->count() }} مطعم</h3>
                 </div>
             </div>
 

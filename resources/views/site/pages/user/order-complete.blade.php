@@ -10,7 +10,7 @@
                     </div>
                     <h2>شكرا لطلبك من خلال وليمة</h2>
                     <p>لقد تم طلبك بنجاح ! يمكنك متابعة حالة طلبك وتعقبه من خلال رابط الطلبات الموجوده في لوحة تحكمك يمكنك الذهاب من
-                    <a href="{{ route('site.get-user-orders', ['id', auth()->guard('normaluser')->user()->id]) }}">هنا</a><br>إستمتع بقهوتك واتركنا ننجز عزومتك! </p>
+                    <a href="{{ route('site.get-user-orders', ['id' => auth()->guard('normaluser')->user()->id]) }}">هنا</a><br>إستمتع بقهوتك واتركنا ننجز عزومتك! </p>
                     
                     <div class="clearfix app-imagea">
                         <img src="{{ asset('assets/site/images/app-img.jpg') }}" alt="">

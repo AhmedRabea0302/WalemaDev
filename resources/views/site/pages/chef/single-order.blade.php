@@ -1,4 +1,4 @@
-@extends('site.layouts.master')
+@extends('site.layouts.master-2')
 @section('content')
     <!-- =================== Content Section ============ -->
     <section class="content">
@@ -23,7 +23,7 @@
                             <li><a href="{{ route('site.chef-profile', ['id' => $chef->id]) }}"><i class="fa fa-tachometer"></i>لوحة التحكم</a></li>
                             <li><a href="{{ route('site.update-chef-profile', ['id' => $chef->id]) }}"><i class="fa fa-user"></i>الملف الشخصي</a></li>
                             <li><a href="{{ route('site.get_chef_orders', ['id' => $chef->id]) }}" class="active"><i class="fa fa-check"></i>الطلبات</a></li>
-                            <li><a href="#"><i class="fa fa-delicious"></i>التقييمات</a></li>
+                            <li><a href="{{ route('site.get_chef_rates', ['id' => $chef->id]) }}"><i class="fa fa-delicious"></i>التقييمات</a></li>
                             <li><a href="{{ route('site.getLogout') }}"><i class="fa fa-sign-out"></i>تسجيل الخروج</a></li>
                         </ul>
                     </div>
@@ -35,7 +35,7 @@
 
                     <div class="admin-section-title">
                         <h2>مرحبا بك {{ $chef->name  }} !
-                            <span style="float: left;">@if($order->status == 'تم التسليم')<a href="" class="btn btn-success">تقييم الطلب المستلم</a>@endif</span>
+                            <span style="float: left;">@if($order->status == 'تم التسليم')<label class="btn btn-success" style="padding: 5px 35px">تم التسليم</label>@endif</span>
                         </h2>
                     </div>
 
@@ -74,7 +74,12 @@
                             @foreach($orders as $order)
                                     <p class="lead"><span>التكلفة:</span> {{ $order['cart']->totalPrice }} LE</p>
                             @endforeach
+
+                                @if($order->status == 'تم التسليم')
+
+                                @else
                                 <input type="submit" class="btn btn-danger" value="تعديل" />
+                                @endif
                             </form>
                         </div>
                     </div>

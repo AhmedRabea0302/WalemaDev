@@ -7,8 +7,8 @@ use App\Cart;
 use App\Meal;
 use App\NormalUser;
 use App\Order;
-use Faker\Provider\cs_CZ\DateTime;
-use Illuminate\Contracts\Session\Session;
+
+use App\Ratea;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -182,6 +182,82 @@ class UserController extends Controller
     }
 
     public function getUserOrders(Request $request, $id) {
+        $orders = Order::where('user_id', $id)->get();
+//        dd($orders);
+        $normalUser = NormalUser::find($id);
+        return view('site.pages.user.orders', compact('orders', 'normalUser'));
+    }
+
+    public function getUserSingleOrder(Request $request, $id, $order_id, $chef_id) {
+        $orderea  = Order::find($order_id);
+        $orders = Order::where('id', $order_id)->get();
+
+        $normalUser = NormalUser::find(auth()->guard('normaluser')->user()->id);
+
+        $orders->transform(function ($ord, $key) {
+            $ord->cart = unserialize($ord->cart);
+            return $ord;
+        });
+
+        return view('site.pages.user.single-order', compact('orderea', 'orders', 'normalUser'));
+    }
+
+    public function getUserRatingPage(Request $request, $id, $order_id, $chef_id) {
+        $orderea  = Order::find($order_id);
+        $orders = Order::where('id', $order_id)->get();
+
+        $normalUser = NormalUser::find(auth()->guard('normaluser')->user()->id);
+
+        $orders->transform(function ($ord, $key) {
+            $ord->cart = unserialize($ord->cart);
+            return $ord;
+        });
+        return view('site.pages.user.rate', compact('orderea', 'orders' ,'normalUser'));
+    }
+
+    public function postRateMeal(Request $request, $id, $order_id) {
+        $user    = NormalUser::find($id);
+        $order   = Order::find($order_id);
+        $chef_id = $order->getChef()->first()->id;
+        $chef    = Chef::find($chef_id);
+        $rate = new Ratea();
+
+
+        $rules = [
+            'comment' => 'required',
+
+        ];
+        //
+        $validator = Validator::make($request->all(), $rules, [
+            'comment.required' => 'من فضك أدخل رأيك وتقييمك',
+        ]);
+
+        if ($validator->fails()) {
+            return ['status' => false, 'data' => implode(PHP_EOL, $validator->errors()->all()), 'id' => 'warna'];
+        }
+
+        if(Ratea::where('order_id',$order->id)->exists()) {
+            return redirect()->back()->withC('danger')->withM('لقد قمت بتقييم هذا الطلب من قبل لا يمكنك اعادة التقييم');
+        } else {
+            $rate->user_id     = $user->id;
+            $rate->order_id    = $order->id;
+            $rate->chef_id     = $chef_id;
+            $rate->rate_number = $request->rate_number;
+            $rate->chef_name   = $chef->name;
+            $rate->user_name   = $user->name;
+            $rate->comment     = $request->comment;
+
+            $rate->image_name  = $user->image_name;
+
+            $order->rated = 1;
+            $order->save();
+
+            $rate->save();
+
+            return redirect()->back()->withC('success')->withM('تم التقييم بنجاح');
+
+        }
+
 
     }
 

@@ -195,6 +195,9 @@ Route::group(['namespace' => 'Site'], function() {
 
     Route::post('/order/{id}/', 'ChefController@updateChefSingleOrder')->name('site.update_order_status');
 
+    Route::get('/chef-rates/{id}/', 'ChefController@getChefRates')->name('site.get_chef_rates');
+
+
     // Meal Routes
     Route::get('/add-meal/{id}', 'MealController@getIndex')->name('site.add-meal');
     Route::post('/add-meal/{id}', 'MealController@postAddMeal')->name('site.postAddMeal');
@@ -209,8 +212,15 @@ Route::group(['namespace' => 'Site'], function() {
     Route::get('/update-user-profile/{id}', 'UserController@getUserProfile')->name('site.get-update-user-profile');
     Route::get('/user-orders/{id}', 'UserController@getUserOrders')->name('site.get-user-orders');
 
+    Route::get('/orders/{id}/', 'UserController@getUserOrders')->name('site.get_user_orders');
+    Route::get('/user-single-order/{id}/{order_id}/{chef_id}', 'UserController@getUserSingleOrder')->name('site.get_single_user_order');
 
     Route::post('/update-user-profile/{id}', 'UserController@postUserProfile')->name('site.postUpdateUser');
+
+    // Rating Routes
+    Route::get('/order-rating/{id}/{order_id}/{chef_id}', 'UserController@getUserRatingPage')->name('site.get_rating_page');
+    Route::post('/rate-order/{id}/{order_id}/', 'UserController@postRateMeal')->name('site.post_feedback');
+
 
     // Normal User Logout Route
     Route::get('/logouta', 'UserController@getLogout')->name('site.userGetLogout');
@@ -218,6 +228,9 @@ Route::group(['namespace' => 'Site'], function() {
     // Normal User Search
     Route::post('/user-search/', 'UserController@postSearch')->name('site.user_search');
     Route::get('/kitchen/{id}/{ch_id}', 'UserController@getOneKitchen')->name('site.get_one_kitchen');
+
+
+
 
     // Add To Cart Routes
     Route::get('add-to-cart/{id}/{ch_id}', 'UserController@getAddCart')->name('site.add_to_cart');
