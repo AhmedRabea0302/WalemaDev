@@ -40,11 +40,11 @@
                     <div class="form-contenta">
                         <p style="margin-bottom: 15px">أو يمكنك البحث بإسم الوجبة</p>
 
-                        <form action="">
+                        <form action="{{ route('site.search_by_meal') }}" method="post">
+                            {{ csrf_field() }}
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" placeholder="اسم الوجبة"/>
+                                <input name="meal_name" class="form-control" type="text" placeholder="اسم الوجبة"/>
                             </div>
-
                             <input type="submit" style="border-top: 2px solid #fff" value="بحث" class="form-btn form-control" />
 
                         </form>

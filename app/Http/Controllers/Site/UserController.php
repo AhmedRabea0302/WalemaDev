@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Chef;
 use App\Cart;
+use App\Favourite;
 use App\Meal;
 use App\NormalUser;
 use App\Order;
@@ -89,10 +90,46 @@ class UserController extends Controller
         return view('site.pages.user.search', compact('kitchens'));
     }
 
+    public function postSearchByMeal(Request $request) {
+        $meal   = $request->meal_name;
+        $meals = Meal::where('name', 'LIKE', '%' . $meal . '%')->get();
+        return view('site.pages.user.search_meals', compact('meals'));
+    }
+
     public function getOneKitchen(Request $request) {
         $kitchen = Chef::find($request->ch_id);
         $meals   = Meal::where('chef_id', $request->ch_id)->get();
-        return view('site.pages.user.one-kitchen', compact('kitchen', 'meals'));
+        $rates   = Ratea::where('chef_id', $request->ch_id)->get();
+
+        $average = round($rates->avg('rate_number'));
+        return view('site.pages.user.one-kitchen', compact('kitchen', 'meals', 'average', 'rates'));
+    }
+
+    public function getKitchenRates($id) {
+        $rates = Ratea::where('chef_id', $id)->get();
+        return view('site.pages.user.rates', compact('rates'));
+    }
+
+    public function addToFavourite($id, $user_id) {
+
+        if(Favourite::where('chef_id', $id)->exists()) {
+            return redirect()->back()->withC('info')->withM('هذ المطبخ في قائمتك المفضله بالفعل');
+        } else {
+            $favourite = new Favourite();
+            $favourite->user_id = $user_id;
+            $favourite->chef_id = $id;
+
+            $favourite->save();
+
+            return redirect()->back()->withC('success')->withM('تم إضافة المطبخ في قائمتك المفضله');
+        }
+    }
+
+    public function getUserFavourites($id) {
+
+        $normalUser = NormalUser::find($id);
+        $favourites = Favourite::where('user_id', $id)->get();
+        return view('site.pages.user.fave', compact('normalUser', 'favourites'));
     }
 
     public function getAddCart(Request $request, $id) {

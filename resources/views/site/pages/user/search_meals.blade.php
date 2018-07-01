@@ -31,24 +31,23 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h3>{{ $kitchens->count() }} مطعم</h3>
+                    <h3>{{ $meals->count() }} وجبة</h3>
                 </div>
             </div>
 
             <div class="row">
-                <br>
-                @foreach($kitchens as $kitchen)
+                @foreach($meals as $meal)
                     <div class="col-md-3 col-sm-6">
                         <div class="one-kitchen">
-                            <a href="{{ route('site.get_one_kitchen', ['id' => auth()->guard('normaluser')->user()->id, 'ch_id' => $kitchen->id]) }}">
+                            <a href="{{ route('site.get_one_kitchen', ['id' => auth()->guard('normaluser')->user()->id, 'ch_id' => $meal->chef_id]) }}">
                                 <div class="image">
-                                    <img src="{{ url('storage/uploads/chefs-profile-images/') . '/' . $kitchen->image_name }}" alt="">
+                                    <img src="{{ url('storage/uploads/meals/') . '/' . $meal->image_name }}" alt="">
                                 </div>
 
                                 <div class="content">
-                                    <h5>{{ $kitchen->name }}</h5>
-                                    <p>{{ substr($kitchen->description, 0, 100) }}...</p>
-                                    <p class="clearfix"><span class="pull-right icon"><i class="fa fa-long-arrow-left"></i></span><span class="min-order">أقل طلب: </span> <span class="price">{{ $kitchen->min_order }}LE</span></p>
+                                    <h5>{{ $meal->name }}</h5>
+                                    <p>{{ substr($meal->description, 0, 100) }}...</p>
+                                    <p class="clearfix"><span class="pull-right icon"><i class="fa fa-long-arrow-left"></i></span><span class="min-order">سعر الوجبة: </span> <span class="price">{{ $meal->price }}LE</span></p>
                                 </div>
 
                             </a>

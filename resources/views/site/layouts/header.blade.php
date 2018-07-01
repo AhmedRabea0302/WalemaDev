@@ -8,7 +8,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a href="{{ route('site.home') }}">الرئيسية <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">المطابخ</a></li>
+                        @if(auth()->guard('normaluser')->user())<li><a href="{{ route('site.user-profile', ['id' => auth()->guard('normaluser')->user()->id]) }}">لوحة التحكم</a></li>@endif
                         <li><a href="#">من نحن</a></li>
                         <li><a href="#">المدونة</a></li>
                         @if(auth()->guard('normaluser')->user())<li><a href="{{ route('site.userGetLogout') }}">تسجيل الخروج</a></li>@endif

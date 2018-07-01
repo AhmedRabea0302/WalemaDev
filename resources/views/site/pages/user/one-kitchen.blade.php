@@ -31,16 +31,16 @@
                                     </li>
                                     <li>
                                         <div class="ui-res-rating">
-                                            <span class="glyphicon glyphicon-star" style="color: #E64D64;"></span>
-                                            <span class="glyphicon glyphicon-star" style="color: #E64D64;"></span>
-                                            <span class="glyphicon glyphicon-star" style="color: #E64D64;"></span>
-                                            <span class="glyphicon glyphicon-star" style="color: #CCCCCC;"></span>
-                                            <span class="glyphicon glyphicon-star" style="color: #CCCCCC;"></span>
+                                            <div class="stars">
+                                                @for($i = 1; $i<=5 ; $i++)
+                                                    <span class="fa fa-star @if($average >= $i) checked @endif"></span>
+                                                @endfor
+                                            </div><!-- End stars -->
                                         </div>
                                     </li>
                                     <li>
                                         <div class="ui-rating-text">
-                                            2 تقييم
+                                            <a href="{{ route('site.get_kitchen_rates', ['id' => $kitchen]) }}" style="text-decoration: none">{{ $rates->count() }} تقييم</a>
                                         </div>
                                     </li>
                                     <div class="clearfix"></div>
@@ -62,22 +62,19 @@
             <div class="row">
                 <div class="col-sm-3 col-xs-12">
                     <div class="side-right-block">
-                        <h4>قائمة التوصيلات</h4>
+                        <h4>صور وجباتنا</h4>
                         <ul class="list-unstyled">
-                            <li><i class="fa fa-check-square-o "></i>بيتزا أم ميمي لازم تعيش</li>
-                            <li><i class="fa fa-check-square-o "></i>شاورما أم ميمي لازم تعيش</li>
-                            <li><i class="fa fa-check-square-o "></i>عكاوي أم ميمي لازم تعيش</li>
-                            <li><i class="fa fa-check-square-o "></i>كوارع أم ميمي لازم تعيش</li>
-                            <li><i class="fa fa-check-square-o "></i>مفتأه أم ميمي لازم تعيش</li>
-                            <li><i class="fa fa-check-square-o "></i>مخاصي أم ميمي لازم تعيش</li>
-                            <li><i class="fa fa-check-square-o "></i>محاشي أم ميمي لازم تعيش</li>
-                            <li><i class="fa fa-check-square-o "></i>سلطات أم ميمي لازم تعيش</li>
-                            <li><i class="fa fa-check-square-o "></i>تومية أم ميمي لازم تعيش</li>
+                            @foreach($meals as $meal)
+                                <li><img src="{{ url('storage/uploads/meals/' . '/' . $meal->image_name) }}" alt=""></li>
+                            @endforeach
                         </ul>
                     </div><!-- End side-right-block -->
                 </div><!-- End col-sm-4 -->
 
                 <div class="col-sm-6 col-xs-12">
+                    @if(session()->has('c'))
+                        <div class="alert alert-{{ session('c') }}">{{ session('m') }}</div>
+                    @endif
                     <div class="order-menu text-center-xs">
                         <img src="{{asset('assets/site/images/banner.png')}}" alt="order-img">
 
@@ -97,6 +94,12 @@
                 </div><!-- End col-sm-6 -->
 
                 <div class="col-sm-3 col-xs-12">
+                    <div class="fav">
+                        <form method="post" action="{{ route('site.add_to_favourite', ['id' => $kitchen->id, 'user_id' => auth()->guard('normaluser')->user()->id])}}">
+                            {{ csrf_field() }}
+                            <input type="submit"style="color: #fff" class="btn btn-danger" value="إضافة للمفضلة" />
+                        </form>
+                    </div>
                     <div class="side-left-block">
                         <h4 class="text-center">طلباتك المضافه</h4>
                         <div class="left-block-content">

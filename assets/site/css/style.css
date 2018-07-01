@@ -595,6 +595,15 @@ img{
     margin-bottom: 10px;
 }
 
+.page-title a {
+    color: #fff;
+    transition: 0.2s ease-in-out all;
+}
+
+.page-title a:hover {
+    color: #e7604a;
+    font-weight: 500;
+}
 
 .kitchen-cont {
     padding: 60px 0;
@@ -612,13 +621,10 @@ img{
 .kitchen-cont .side-right-block ul li{
     margin-top: 6px;
     font-size: 14px;
+    border: 1px solid #e5e5e5;
+    padding: 2px;
 }
 
-.kitchen-cont .side-right-block ul li i{
-    color: #e7604a;
-    margin-left: 5px;
-    line-height: 1px;
-}
 
 .order-menu .order-item {
     margin-top: 10px;
@@ -824,18 +830,22 @@ img{
     margin-top: 5px;
 }
 
-.grid .fav {
+.kitchen-cont .fav {
     width: 100%;
     padding-top: 0;
+    margin-bottom: 10px;
 }
 
-.grid .fav a{
-    width: 90%;
+.kitchen-cont .fav input{
+    width: 100%;
+    display: block;
     padding: 5px;
     margin: 0 auto 10px auto;
     text-align: center;
-    color: #e7604a;
+    background: #e7604a;
+    border: 1px solid #e7604a;
     color: #fff;
+
 }
 /********************* Kitchen Dashboard Page ********************/
 

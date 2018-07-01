@@ -207,39 +207,49 @@ Route::group(['namespace' => 'Site'], function() {
 
     Route::post('/delete-meal/{id}/', 'MealController@deleteMeal')->name('site.deleteMeal');
 
-    // Normal User Routes
-    Route::get('/user-profile/{id}', 'UserController@getIndex')->name('site.user-profile');
-    Route::get('/update-user-profile/{id}', 'UserController@getUserProfile')->name('site.get-update-user-profile');
-    Route::get('/user-orders/{id}', 'UserController@getUserOrders')->name('site.get-user-orders');
+    Route::group(['middleware' => 'checkUser'], function () {
+        // Normal User Routes
+        Route::get('/user-profile/{id}', 'UserController@getIndex')->name('site.user-profile');
+        Route::get('/update-user-profile/{id}', 'UserController@getUserProfile')->name('site.get-update-user-profile');
+        Route::get('/user-orders/{id}', 'UserController@getUserOrders')->name('site.get-user-orders');
 
-    Route::get('/orders/{id}/', 'UserController@getUserOrders')->name('site.get_user_orders');
-    Route::get('/user-single-order/{id}/{order_id}/{chef_id}', 'UserController@getUserSingleOrder')->name('site.get_single_user_order');
+        Route::get('/orders/{id}/', 'UserController@getUserOrders')->name('site.get_user_orders');
+        Route::get('/user-single-order/{id}/{order_id}/{chef_id}', 'UserController@getUserSingleOrder')->name('site.get_single_user_order');
 
-    Route::post('/update-user-profile/{id}', 'UserController@postUserProfile')->name('site.postUpdateUser');
+        Route::post('/update-user-profile/{id}', 'UserController@postUserProfile')->name('site.postUpdateUser');
 
-    // Rating Routes
-    Route::get('/order-rating/{id}/{order_id}/{chef_id}', 'UserController@getUserRatingPage')->name('site.get_rating_page');
-    Route::post('/rate-order/{id}/{order_id}/', 'UserController@postRateMeal')->name('site.post_feedback');
+        // Rating Routes
+        Route::get('/order-rating/{id}/{order_id}/{chef_id}', 'UserController@getUserRatingPage')->name('site.get_rating_page');
+        Route::post('/rate-order/{id}/{order_id}/', 'UserController@postRateMeal')->name('site.post_feedback');
 
+        // Normal User Search
+        Route::post('/user-search/', 'UserController@postSearch')->name('site.user_search');
+        Route::get('/kitchen/{id}/{ch_id}', 'UserController@getOneKitchen')->name('site.get_one_kitchen');
+
+        Route::post('/search-meal/', 'UserController@postSearchByMeal')->name('site.search_by_meal');
+        Route::get('/kitchen-rates/{id}', 'UserController@getKitchenRates')->name('site.get_kitchen_rates');
+
+        // Add Kitchen To Favourites
+        Route::post('/add-to-favourites/{id}/{user_id}', 'UserController@addToFavourite')->name('site.add_to_favourite');
+        Route::get('/user-favourites/{id}', 'UserController@getUserFavourites')->name('site.get_user_favs');
+
+
+
+
+        // Add To Cart Routes
+        Route::get('add-to-cart/{id}/{ch_id}', 'UserController@getAddCart')->name('site.add_to_cart');
+        Route::post('add-order/{id}/{ch_id}', 'UserController@postAddOrder')->name('site.post_add_order');
+
+        Route::get('increase-by-one/{id}/{ch_id}', 'UserController@getIncreaseByOne')->name('site.increase-one');
+        Route::get('reduce-by-one/{id}/{ch_id}', 'UserController@getReduceByOne')->name('site.reduce-one');
+
+        Route::get('order-process/{id}/{ch_id}', 'UserController@getOrderProcess')->name('site.order_process');
+    });
 
     // Normal User Logout Route
     Route::get('/logouta', 'UserController@getLogout')->name('site.userGetLogout');
 
-    // Normal User Search
-    Route::post('/user-search/', 'UserController@postSearch')->name('site.user_search');
-    Route::get('/kitchen/{id}/{ch_id}', 'UserController@getOneKitchen')->name('site.get_one_kitchen');
 
-
-
-
-    // Add To Cart Routes
-    Route::get('add-to-cart/{id}/{ch_id}', 'UserController@getAddCart')->name('site.add_to_cart');
-    Route::post('add-order/{id}/{ch_id}', 'UserController@postAddOrder')->name('site.post_add_order');
-
-    Route::get('increase-by-one/{id}/{ch_id}', 'UserController@getIncreaseByOne')->name('site.increase-one');
-    Route::get('reduce-by-one/{id}/{ch_id}', 'UserController@getReduceByOne')->name('site.reduce-one');
-
-    Route::get('order-process/{id}/{ch_id}', 'UserController@getOrderProcess')->name('site.order_process');
 
 
 //    Route::post('/contact', 'HomeController@postSendMessage')->name('Site.send_message');
