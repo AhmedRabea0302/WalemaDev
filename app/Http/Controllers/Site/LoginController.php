@@ -24,7 +24,7 @@ class LoginController extends Controller
             ]);
 
             if ($validator->fails()) {
-                return ['status' => false, 'data' => implode(PHP_EOL, $validator->errors()->all()), 'id' => 'warna'];
+                return ['status' => false, 'data' => implode('<br />', $validator->errors()->all()), 'id' => 'warna'];
             }
 
             if (auth()->guard('chef')->attempt(['email' => $request->email, 'password' => $request->password])) {
@@ -47,7 +47,7 @@ class LoginController extends Controller
             ]);
 
             if ($validator->fails()) {
-                return ['status' => false, 'data' => implode(PHP_EOL, $validator->errors()->all()), 'id' => 'warna'];
+                return ['status' => false, 'data' => implode('<br />', $validator->errors()->all()), 'id' => 'warna'];
             }
 
             if (auth()->guard('normaluser')->attempt(['email' => $request->email, 'password' => $request->password])) {

@@ -3,6 +3,13 @@
     <div class="upper-foot">
         <div class="container">
             <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div id="subscribe">
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-sm-12">
                     <h2 class="text-center">
                         <i class="fa fa-envelope-o"></i>
@@ -11,11 +18,13 @@
                 </div>
 
                 <div class="row">
+
                     <div class="col-md-6 col-md-offset-3">
-                        <form action="#">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="subscribe" placeholder="أدخل بريدك الإلكتروني">
-                                <button class="btn btn-primary">شارك</button>
+
+                        <form class="sub" action="{{ route('site.subscribe') }}" method="post" onsubmit="return false;">
+                            <div class="form-group">{{ csrf_field() }}
+                                <input type="text" class="form-control" name="email" placeholder="أدخل بريدك الإلكتروني">
+                                <input type="submit" class="btn btn-primary" value="شارك"/>
                             </div>
                         </form>
                     </div>

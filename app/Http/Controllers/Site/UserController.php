@@ -10,6 +10,7 @@ use App\NormalUser;
 use App\Order;
 
 use App\Ratea;
+use App\Subscribe;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -51,7 +52,7 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return ['status' => false, 'data' => implode(PHP_EOL, $validator->errors()->all()), 'id' => 'warna'];
+            return ['status' => false, 'data' => implode('<br />', $validator->errors()->all()), 'id' => 'warna'];
         }
 
         $file = $request->file('photo');
@@ -194,7 +195,7 @@ class UserController extends Controller
 //        ]);
 
 //        if ($validator->fails()) {
-//            return ['status' => false, 'data' => implode(PHP_EOL, $validator->errors()->all()), 'id' => 'warna'];
+//            return ['status' => false, 'data' => implode('<br />', $validator->errors()->all()), 'id' => 'warna'];
 //        }
 
         $oldCart = session()->get('cart');
@@ -270,7 +271,7 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return ['status' => false, 'data' => implode(PHP_EOL, $validator->errors()->all()), 'id' => 'warna'];
+            return ['status' => false, 'data' => implode('<br />', $validator->errors()->all()), 'id' => 'warna'];
         }
 
         if(Ratea::where('order_id',$order->id)->exists()) {
@@ -295,7 +296,30 @@ class UserController extends Controller
 
         }
 
+    }
 
+    public function subscribe(Request $request) {
+        $subscribe =  new Subscribe();
+
+        $rules = [
+            'email' => 'required|email|unique:subscribes',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, [
+            'email.required'   => 'من فضلك أدخل بريدك الإلكتروني',
+            'email.email'      => 'من فضلك أدخل بريد إلكتروني صحيح',
+            'email.unique'     => 'أنت مشترك معنا بالفعل سيصلك أخبارنا',
+        ]);
+
+        if($validator->fails()) {
+            return ['status' => 'error', 'data' => implode('<br />', $validator->errors()->all()), 'id' => 'warna'];
+        }
+
+        $subscribe->insert([
+            'email'   => $request->email,
+        ]);
+
+        return ['status' => 'success', 'data' => 'سعيدون لمشاركتك :) ستصلك أخبارنا', 'id' => 'warna'];
     }
 
     public function getLogout() {

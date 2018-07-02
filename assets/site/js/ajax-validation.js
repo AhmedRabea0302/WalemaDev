@@ -25,6 +25,31 @@ $('.register-forma').on('submit' ,function (e) {
 
 });
 
+$('.sub').on('submit' ,function (e) {
+    e.preventDefault();
+    var form = $(this);
+    var url = form.attr('action');
+
+    $.ajax({
+        method: 'POST',
+        dataType: 'json',
+        data: form.serialize(),
+        url: url,
+        success: function (response) {
+            if (response.status == 'success') {
+                $('#subscribe').html(response.data)[0].className = 'alert alert-success';
+            } else {
+                $('#subscribe').html(response.data)[0].className = 'alert alert-danger';
+            }
+        }
+    });
+
+    form.get([0]).reset();
+
+    $('#warna').removeClass('hidden');
+
+});
+
 $('.formAddImage').on('submit' ,function (e) {
     e.preventDefault();
     var form = $(this);

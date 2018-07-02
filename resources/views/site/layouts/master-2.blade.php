@@ -44,6 +44,8 @@
 <script src="{{asset('assets/site/vendor/jquery/jquery.js')}}"></script>
 <script src="{{asset('assets/site/vendor/bootstrap/js/bootstrap.js')}}"></script>
 <script src="{{asset('assets/site/js/main.js')}}"></script>
+<script src="{{asset('assets/site/js/ajax-validation.js')}}"></script>
+
 @yield('scripts')
 </body>
 </html>

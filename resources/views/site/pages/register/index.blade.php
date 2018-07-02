@@ -125,6 +125,3 @@
         </div> <!-- End register -->
     </section><!-- End register -->
 @endsection
-@section('scripts')
-    <script src="{{asset('assets/site/js/ajax-validation.js')}}"></script>
-@endsection

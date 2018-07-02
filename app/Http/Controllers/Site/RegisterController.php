@@ -40,7 +40,7 @@ class RegisterController extends Controller
             ]);
 //
             if($validator->fails()) {
-                return ['status' => false ,'data' => implode(PHP_EOL, $validator->errors()->all()), 'id' => 'warna'];
+                return ['status' => false ,'data' => implode('<br />', $validator->errors()->all()), 'id' => 'warna'];
             }
 
             $chef->name          = $request->chef_name;

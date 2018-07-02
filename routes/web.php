@@ -249,6 +249,8 @@ Route::group(['namespace' => 'Site'], function() {
     // Normal User Logout Route
     Route::get('/logouta', 'UserController@getLogout')->name('site.userGetLogout');
 
+    // Subscribe Routes
+    Route::post('/subscribe', 'UserController@subscribe')->name('site.subscribe');
 
 
 

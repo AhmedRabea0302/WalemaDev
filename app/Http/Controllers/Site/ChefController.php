@@ -55,7 +55,7 @@ class ChefController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return ['status' => false, 'data' => implode(PHP_EOL, $validator->errors()->all()), 'id' => 'warna'];
+            return ['status' => false, 'data' => implode('<br />', $validator->errors()->all()), 'id' => 'warna'];
         }
 
         $file = $request->file('photo');
