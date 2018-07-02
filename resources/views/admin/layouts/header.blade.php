@@ -40,14 +40,14 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">
                             <li>
-                                {{--<a href="{{route('admin.profile')}}">--}}
+
                                 <a href="#">
                                     <i class="icon-user"></i> الصفحه الشخصيه </a>
                             </li>
                             <li class="divider"> </li>
                             <li>
-                                {{--<a href="{{route('admin.logout')}}">--}}
-                                <a href="#">
+
+                                <a href="{{route('admin.logout')}}">
                                     <i class="icon-logout"></i> تسجيل الخروج </a>
                             </li>
                         </ul>

@@ -46,8 +46,6 @@ $('.sub').on('submit' ,function (e) {
 
     form.get([0]).reset();
 
-    $('#warna').removeClass('hidden');
-
 });
 
 $('.formAddImage').on('submit' ,function (e) {
@@ -74,43 +72,3 @@ $('.formAddImage').on('submit' ,function (e) {
 
     $('#warna').removeClass('hidden');
 });
-//
-// $('.editTypeBTN').on('click' ,function (e) {
-//     alert('ahmed');
-//     e.preventDefault();
-//
-//     var url = $(this).data('url');
-//     var link = $(this).parents('tr').find('.social_link').val();
-//     var icon = $(this).parents('tr').find('.social_icon').val();
-//
-//     console.log(link);
-//     console.log(icon);
-//
-//     $.ajax({
-//         url: url,
-//         dataType: 'json',
-//         method: 'POST',
-//         data : {link: link ,icon: icon ,_token: $(this).data('token')},
-//         success: function (response) {
-//             if (response.status == 'success') {
-//                 swal({title: "تم بنجاح", text: response.data, type: "success"}, function () {
-//                     location.reload(true);
-//                 });
-//             } else {
-//                 swal('خطا', response.data, 'error');
-//             }
-//         }
-//     });
-//
-// });
-
-// $('.admin_logout').on('click', function (e) {
-//     $.ajax({
-//         url: 'auth/logout',
-//         method: 'POST',
-//         dataType:'json',
-//         success: function (response) {
-//             window.location.replace('/login');
-//         }
-//     });
-// });

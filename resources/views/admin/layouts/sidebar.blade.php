@@ -39,6 +39,20 @@
                 </a>
             </li>
 
+            <li @if(Request::route()->getName() == 'admin.subscribe') class="active" @endif class="nav-item">
+                <a href="{{ route('admin.subscribe') }}" class="nav-link nav-toggle">
+                    <i class="fa fa-bullhorn"></i>
+                    <span class="title">المشاركين</span>
+                </a>
+            </li>
+
+            <li @if(Request::route()->getName() == 'admin.contacts') class="active" @endif class="nav-item">
+                <a href="{{ route('admin.contacts') }}" class="nav-link nav-toggle">
+                    <i class="fa fa-envelope"></i>
+                    <span class="title">الرسائل</span>
+                </a>
+            </li>
+
             {{--<li @if(Request::route()->getName() == 'admin.static_pages') class="active" @endif class="nav-item">--}}
                 {{--<a href="{{ route('admin.static_pages') }}" class="nav-link nav-toggle">--}}
                     {{--<i class="fa fa-slack"></i>--}}

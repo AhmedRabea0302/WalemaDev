@@ -97,26 +97,28 @@
                             </div>
                         </div>
                     </form>
-                    <form role="tabpanel" class="tab-pane fade in" id="contact">
+
+                    <form method="post" action="{{ route('site.post_contact') }}" method="post" class="tab-pane fade in register-forma" id="contact">
+                        {{ csrf_field() }}
                         <h3 class="form-title">تواصل</h3>
                         <div class="form-group">
                             <label>الاسم </label>
-                            <input class="form-control" value="" type="text" placeholder="ادخل  الاسم">
+                            <input name="name" class="form-control" type="text" placeholder="ادخل  الاسم">
                         </div>
                         <div class="form-group">
                             <label>البريد الالكتروني </label>
-                            <input class="form-control" value="" type="email" placeholder="ادخل  البريد الالكتروني">
+                            <input  name="email" class="form-control" type="email" placeholder="ادخل  البريد الالكتروني">
                         </div>
                         <div class="form-group">
                             <label>العنوان </label>
-                            <input class="form-control" value="" type="text" placeholder="ادخل  العنوان للموضوع">
+                            <input name="address" class="form-control" type="text" placeholder="ادخل  العنوان للموضوع">
                         </div>
                         <div class="form-group">
                             <label>رسالتك </label>
-                            <textarea class="form-control" value=""  placeholder="ادخل  العنوان للموضوع"></textarea>
+                            <textarea class="form-control" name="message"  placeholder="ادخل  العنوان للموضوع"></textarea>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-primary form-control"> ارسال</button>
+                            <input type="submit" value="إرسال" class="btn btn-primary form-control">
                         </div>
                     </form>
 

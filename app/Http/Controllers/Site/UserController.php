@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Chef;
 use App\Cart;
+use App\Contact;
 use App\Favourite;
 use App\Meal;
 use App\NormalUser;
@@ -320,6 +321,38 @@ class UserController extends Controller
         ]);
 
         return ['status' => 'success', 'data' => 'سعيدون لمشاركتك :) ستصلك أخبارنا', 'id' => 'warna'];
+    }
+
+    public function postContact(Request $request) {
+
+        $contact = new Contact();
+        $rules = [
+            'name'     => 'required|min:3',
+            'email'    => 'required|email',
+            'message'   => 'required',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, [
+            'name.required'    => 'من فضلك أدخل الاسم',
+            'name.min:3'       => 'أدخل اسم اكبر من 3 حروف',
+            'email.required'   => 'من فضك أدخل البريد الإلكتروني',
+            'email.email'      => 'من فضلك أدخل بريد الكتروني صحيح',
+            'message.required' => 'من فضلك أدخل الرسالة',
+        ]);
+
+        if($validator->fails()) {
+            return ['status' => false ,'data' => implode('<br />', $validator->errors()->all()), 'id' => 'warna'];
+        }
+
+        $contact->name    = $request->name;
+        $contact->email   = $request->email;
+        $contact->address = $request->address;
+        $contact->message = $request->message;
+
+        $contact->save();
+
+        return ['status' => 'success', 'data' => 'تم إرسال رسالتك بنجاح سيقوم أحد الأعضاء بالرد عليك في 24 ساعه', 'id' => 'warna'];
+
     }
 
     public function getLogout() {

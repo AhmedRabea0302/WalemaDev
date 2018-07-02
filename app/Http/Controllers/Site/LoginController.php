@@ -54,10 +54,6 @@ class LoginController extends Controller
 
                 return redirect()->route('site.user-profile', ['id' => auth()->guard('normaluser')->user()->id]);
             }
-
-            else {
-                return redirect()->back();
-            }
         }
 
     }
